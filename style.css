@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f3e7;
+    color: #333;
+}
+
+header {
+    background: #b22222;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+nav a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.produto {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+}
+
+.produto img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.produto h3 {
+    margin: 10px 0;
+}
+
+.produto p {
+    color: #666;
+}
+
+button {
+    background: #ff9800;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e68900;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: white;
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.oculto {
+    display: none;
+}
+
+footer {
+    background: #b22222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

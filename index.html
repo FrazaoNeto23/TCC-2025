@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria Delícia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>🍕 Pizzaria Delícia</h1>
+        <nav>
+            <a href="#">Cardápio</a>
+            <a href="#" onclick="mostrarCarrinho()">🛒 Carrinho (<span id="qtd-carrinho">0</span>)</a>
+        </nav>
+    </header>
+
+    <main id="produtos">
+    </main>
+
+    <aside id="carrinho" class="oculto">
+        <h2>🛒 Seu Carrinho</h2>
+        <ul id="lista-carrinho"></ul>
+        <p><strong>Total:</strong> R$ <span id="total">0.00</span></p>
+        <button onclick="finalizarCompra()">Finalizar Compra</button>
+        <button onclick="fecharCarrinho()">Fechar</button>
+    </aside>
+
+    <footer>
+        <p>&copy; 2025 Pizzaria Delícia - Feito com ❤️ e queijo</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
