@@ -2,6 +2,8 @@ let carrinho = [];
 let contador = document.getElementById("contador");
 let listaCarrinho = document.getElementById("lista-carrinho");
 let total = document.getElementById("total");
+let carrinhoDiv = document.getElementById("carrinho");
+let fecharCarrinhoBtn = document.getElementById("fechar-carrinho");
 
 function adicionarCarrinho(nome, preco) {
     carrinho.push({ nome, preco });
@@ -22,12 +24,16 @@ function atualizarCarrinho() {
 }
 
 document.getElementById("carrinho-icon").addEventListener("click", () => {
-    document.getElementById("carrinho").classList.toggle("mostrar");
+    carrinhoDiv.classList.toggle("mostrar");
+});
+
+fecharCarrinhoBtn.addEventListener("click", () => {
+    carrinhoDiv.classList.remove("mostrar");
 });
 
 document.getElementById("finalizar").addEventListener("click", () => {
     alert("Compra finalizada! Obrigado por pedir na Burger House 🍔");
     carrinho = [];
     atualizarCarrinho();
-    document.getElementById("carrinho").classList.remove("mostrar");
+    carrinhoDiv.classList.remove("mostrar");
 });
