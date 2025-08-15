@@ -1,70 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger House</title>
+    <title>Cardápio - Burger House</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
         <h1>🍔 Burger House</h1>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Cardápio</a>
+            <a href="index.html" class="ativo">Home</a>
+            <a href="cardapio.html">Cardápio</a>
             <a href="#">Contato</a>
-            <div id="carrinho-icon">🛒 <span id="contador">0</span></div>
         </nav>
     </header>
 
     <main>
         <h2>Nosso Cardápio</h2>
+        <p class="descricao-cardapio">Escolha o seu hambúrguer favorito e venha saborear no Burger House! 😋</p>
+        
         <div class="produtos">
             <div class="produto">
-                <img src="img/Cheesburguer.jpg" alt="Cheeseburger">
+                <img src="https://source.unsplash.com/300x200/?burger,cheese" alt="Cheeseburger">
                 <h3>Cheeseburger</h3>
                 <p>R$ 15,90</p>
-                <button onclick="adicionarCarrinho('Cheeseburger', 15.90)">Adicionar</button>
             </div>
 
             <div class="produto">
-                <img src="img/Bacon.jpg" alt="X-Bacon">
+                <img src="https://source.unsplash.com/300x200/?burger,bacon" alt="X-Bacon">
                 <h3>X-Bacon</h3>
                 <p>R$ 18,50</p>
-                <button onclick="adicionarCarrinho('X-Bacon', 18.50)">Adicionar</button>
             </div>
 
             <div class="produto">
-                <img src="img/Vegetariano.jpg" alt="Veggie Burger">
+                <img src="https://source.unsplash.com/300x200/?veggie,burger" alt="Veggie Burger">
                 <h3>Veggie Burger</h3>
                 <p>R$ 16,00</p>
-                <button onclick="adicionarCarrinho('Veggie Burger', 16.00)">Adicionar</button>
             </div>
 
             <div class="produto">
-                <img src="img/Duplo.jpg" alt="Duplo Burger">
+                <img src="https://source.unsplash.com/300x200/?double,burger" alt="Duplo Burger">
                 <h3>Duplo Burger</h3>
                 <p>R$ 22,00</p>
-                <button onclick="adicionarCarrinho('Duplo Burger', 22.00)">Adicionar</button>
+            </div>
+
+            <div class="produto">
+                <img src="https://source.unsplash.com/300x200/?burger,onion" alt="Onion Burger">
+                <h3>Onion Burger</h3>
+                <p>R$ 19,50</p>
+            </div>
+
+            <div class="produto">
+                <img src="https://source.unsplash.com/300x200/?burger,spicy" alt="Spicy Burger">
+                <h3>Spicy Burger</h3>
+                <p>R$ 20,00</p>
             </div>
         </div>
     </main>
 
-    <aside id="carrinho">
-        <button id="fechar-carrinho">✖ Fechar</button>
-        <h2>Carrinho</h2>
-        <ul id="lista-carrinho"></ul>
-        <p id="total">Total: R$ 0,00</p>
-        <button id="finalizar">Finalizar Compra</button>
-    </aside>
-
     <footer>
         <p>© 2025 Burger House - Feito com ❤️ e muito queijo</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
-
 </html>
