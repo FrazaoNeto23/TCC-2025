@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrar • Burger House</title>
+    <link rel="stylesheet" href="login.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="auth-bg">
+    <header class="topbar">
+        <a class="brand" href="index.html">🍔 Burger House</a>
+    </header>
+
+    <main class="auth-container">
+        <div class="card">
+            <div class="tabs">
+                <button class="tab active" data-target="#login">Entrar</button>
+                <button class="tab" data-target="#signup">Cadastrar</button>
+            </div>
+
+            <!-- LOGIN -->
+            <form id="login" class="panel active" autocomplete="on">
+                <div class="field">
+                    <label for="login-email">E-mail</label>
+                    <input id="login-email" name="email" type="email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="field">
+                    <label for="login-senha">Senha</label>
+                    <div class="password-wrap">
+                        <input id="login-senha" name="senha" type="password" minlength="6" placeholder="••••••••"
+                            required>
+                        <button type="button" class="showpass" data-target="login-senha"
+                            aria-label="Mostrar/ocultar senha">👁️</button>
+                    </div>
+                </div>
+
+                <div class="extras">
+                    <label class="remember">
+                        <input type="checkbox" id="lembrar" />
+                        Lembrar de mim
+                    </label>
+                    <a href="#" class="muted" id="recuperar-link">Esqueci minha senha</a>
+                </div>
+
+                <button class="primary" type="submit">Entrar</button>
+                <p class="msg" id="login-msg"></p>
+            </form>
+
+            <!-- CADASTRO -->
+            <form id="signup" class="panel" autocomplete="on">
+                <div class="grid">
+                    <div class="field">
+                        <label for="cad-nome">Nome</label>
+                        <input id="cad-nome" name="nome" type="text" placeholder="Seu nome" required>
+                    </div>
+                    <div class="field">
+                        <label for="cad-email">E-mail</label>
+                        <input id="cad-email" name="email" type="email" placeholder="voce@email.com" required>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="field">
+                        <label for="cad-senha">Senha</label>
+                        <div class="password-wrap">
+                            <input id="cad-senha" name="senha" type="password" minlength="6"
+                                placeholder="Mínimo 6 caracteres" required>
+                            <button type="button" class="showpass" data-target="cad-senha"
+                                aria-label="Mostrar/ocultar senha">👁️</button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="cad-confirmar">Confirmar senha</label>
+                        <div class="password-wrap">
+                            <input id="cad-confirmar" name="confirmar" type="password" minlength="6"
+                                placeholder="Repita a senha" required>
+                            <button type="button" class="showpass" data-target="cad-confirmar"
+                                aria-label="Mostrar/ocultar senha">👁️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="primary" type="submit">Criar conta</button>
+                <p class="msg" id="signup-msg"></p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="foot">
+        © 2025 Burger House
+    </footer>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
