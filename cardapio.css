@@ -1,4 +1,3 @@
-/* Reset básico
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +7,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f3e9;
-    color: #333;
 }
 
-Cabeçalho 
+/* Cabeçalho */
 header {
     background-color: #d35400;
     color: white;
@@ -22,47 +20,38 @@ header {
     flex-wrap: wrap;
 }
 
-header h1 {
-    font-size: 1.5rem;
-}
-
-nav {
+header nav {
     display: flex;
+    align-items: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
-nav a {
-    color: white;
+header nav a {
     text-decoration: none;
+    color: white;
     font-weight: bold;
     font-size: 0.9rem;
-    padding-bottom: 2px;
 }
 
 nav a.ativo {
     border-bottom: 2px solid white;
 }
 
- Conteúdo principal 
+
+#carrinho-icon {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Conteúdo principal */
 main {
     padding: 20px;
-    max-width: 1100px;
-    margin: auto;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.descricao-cardapio {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-    color: #555;
-}
-
-/* Produtos 
 .produtos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -98,29 +87,72 @@ h2 {
     color: #d35400;
 }
 
-/* Rodapé 
+.produto button {
+    background-color: #d35400;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.2s ease;
+}
+
+.produto button:hover {
+    background-color: #e67e22;
+}
+
+/* Carrinho lateral */
+#carrinho {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    /* sempre começa escondido no desktop */
+    background: white;
+    width: 300px;
+    height: 100%;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+#carrinho.mostrar {
+    right: 0;
+}
+
+#fechar-carrinho {
+    display: none;
+    /* só mostra no celular */
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Rodapé */
 footer {
     background-color: #d35400;
     color: white;
     padding: 10px;
     text-align: center;
     font-size: 0.9rem;
-    margin-top: 20px;
 }
 
-/* Responsividade 
+/* RESPONSIVIDADE PARA CELULAR */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
+    #carrinho {
+        width: 100%;
+        right: -100%;
+        /* escondido fora da tela no mobile */
     }
 
-    nav {
-        flex-wrap: wrap;
-        gap: 10px;
+    #carrinho.mostrar {
+        right: 0;
     }
 
-    .produtos {
-        grid-template-columns: 1fr;
+    #fechar-carrinho {
+        display: block;
     }
-}  */
+}
