@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzaria Delícia</title>
+    <title>Burger House</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
-        <h1>🍕 Pizzaria Delícia</h1>
+        <h1>🍔 Burger House</h1>
         <nav>
+            <a href="#">Home</a>
             <a href="#">Cardápio</a>
-            <a href="#" onclick="mostrarCarrinho()">🛒 Carrinho (<span id="qtd-carrinho">0</span>)</a>
+            <a href="#">Contato</a>
+            <div id="carrinho-icon">🛒 <span id="contador">0</span></div>
         </nav>
     </header>
 
-    <main id="produtos">
+    <main>
+        <h2>Nosso Cardápio</h2>
+        <div class="produtos">
+            <div class="produto">
+                <img src="img/Grilled Chili Cheeseburgers are a twist on a.jpg" alt="Cheeseburger">
+                <h3>Cheeseburger</h3>
+                <p>R$ 15,90</p>
+                <button onclick="adicionarCarrinho('Cheeseburger', 15.90)">Adicionar</button>
+            </div>
+
+            <div class="produto">
+                <img src="img/92da8301-5149-40cc-971b-b331b85a9228.jpg" alt="X-Bacon">
+                <h3>X-Bacon</h3>
+                <p>R$ 18,50</p>
+                <button onclick="adicionarCarrinho('X-Bacon', 18.50)">Adicionar</button>
+            </div>
+
+            <div class="produto">
+                <img src="img/2a8f3e3d-1f47-4869-b90f-c26142ac075a.jpg" alt="Veggie Burger">
+                <h3>Veggie Burger</h3>
+                <p>R$ 16,00</p>
+                <button onclick="adicionarCarrinho('Veggie Burger', 16.00)">Adicionar</button>
+            </div>
+
+            <div class="produto">
+                <img src="img/SHARK BURGUER 🦈🍔 on Instagram_ “Aquele.jpg" alt="Duplo Burger">
+                <h3>Duplo Burger</h3>
+                <p>R$ 22,00</p>
+                <button onclick="adicionarCarrinho('Duplo Burger', 22.00)">Adicionar</button>
+            </div>
+        </div>
     </main>
 
-    <aside id="carrinho" class="oculto">
-        <h2>🛒 Seu Carrinho</h2>
+    <aside id="carrinho">
+        <h2>Carrinho</h2>
         <ul id="lista-carrinho"></ul>
-        <p><strong>Total:</strong> R$ <span id="total">0.00</span></p>
-        <button onclick="finalizarCompra()">Finalizar Compra</button>
-        <button onclick="fecharCarrinho()">Fechar</button>
+        <p id="total">Total: R$ 0,00</p>
+        <button id="finalizar">Finalizar Compra</button>
     </aside>
 
     <footer>
-        <p>&copy; 2025 Pizzaria Delícia - Feito com ❤️ e queijo</p>
+        <p>© 2025 Burger House - Feito com ❤️ e muito queijo</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>

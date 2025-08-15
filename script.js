@@ -1,62 +1,33 @@
-const produtos = [
-    { id: 1, nome: "Pizza de Calabresa", preco: 45.00, img: "https://images.unsplash.com/photo-1601924582971-c6a1f7a8df20?auto=format&fit=crop&w=500&q=80" },
-    { id: 2, nome: "Pizza de Mussarela", preco: 42.00, img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=500&q=80" },
-    { id: 3, nome: "Pizza Portuguesa", preco: 48.00, img: "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=500&q=80" },
-    { id: 4, nome: "Pizza de Frango c/ Catupiry", preco: 50.00, img: "https://images.unsplash.com/photo-1601924579440-9896c6f4f13e?auto=format&fit=crop&w=500&q=80" }
-];
+let carrinho = [];
+let contador = document.getElementById("contador");
+let listaCarrinho = document.getElementById("lista-carrinho");
+let total = document.getElementById("total");
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-function renderizarProdutos() {
-    const container = document.getElementById("produtos");
-    container.innerHTML = "";
-    produtos.forEach(produto => {
-        container.innerHTML += `
-            <div class="produto">
-                <img src="${produto.img}" alt="${produto.nome}">
-                <h3>${produto.nome}</h3>
-                <p>R$ ${produto.preco.toFixed(2)}</p>
-                <button onclick="adicionarCarrinho(${produto.id})">Adicionar ao Carrinho</button>
-            </div>
-        `;
-    });
+function adicionarCarrinho(nome, preco) {
+    carrinho.push({ nome, preco });
+    atualizarCarrinho();
 }
 
-function adicionarCarrinho(id) {
-    const produto = produtos.find(p => p.id === id);
-    carrinho.push(produto);
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    atualizarQtdCarrinho();
-}
-
-function atualizarQtdCarrinho() {
-    document.getElementById("qtd-carrinho").textContent = carrinho.length;
-}
-
-function mostrarCarrinho() {
-    const aside = document.getElementById("carrinho");
-    aside.classList.remove("oculto");
-    const lista = document.getElementById("lista-carrinho");
-    lista.innerHTML = "";
-    let total = 0;
+function atualizarCarrinho() {
+    listaCarrinho.innerHTML = "";
+    let totalCompra = 0;
     carrinho.forEach(item => {
-        lista.innerHTML += `<li>${item.nome} - R$ ${item.preco.toFixed(2)}</li>`;
-        total += item.preco;
+        let li = document.createElement("li");
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        listaCarrinho.appendChild(li);
+        totalCompra += item.preco;
     });
-    document.getElementById("total").textContent = total.toFixed(2);
+    total.textContent = `Total: R$ ${totalCompra.toFixed(2)}`;
+    contador.textContent = carrinho.length;
 }
 
-function fecharCarrinho() {
-    document.getElementById("carrinho").classList.add("oculto");
-}
+document.getElementById("carrinho-icon").addEventListener("click", () => {
+    document.getElementById("carrinho").classList.toggle("mostrar");
+});
 
-function finalizarCompra() {
-    alert("Compra finalizada! Obrigado pela preferência 🍕");
+document.getElementById("finalizar").addEventListener("click", () => {
+    alert("Compra finalizada! Obrigado por pedir na Burger House 🍔");
     carrinho = [];
-    localStorage.removeItem("carrinho");
-    atualizarQtdCarrinho();
-    fecharCarrinho();
-}
-
-renderizarProdutos();
-atualizarQtdCarrinho();
+    atualizarCarrinho();
+    document.getElementById("carrinho").classList.remove("mostrar");
+});

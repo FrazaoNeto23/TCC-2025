@@ -6,12 +6,11 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f8f3e7;
-    color: #333;
+    background-color: #f7f3e9;
 }
 
 header {
-    background: #b22222;
+    background-color: #d35400;
     color: white;
     padding: 15px;
     display: flex;
@@ -19,80 +18,77 @@ header {
     align-items: center;
 }
 
-header h1 {
-    font-size: 1.5rem;
-}
-
-nav a {
-    color: white;
-    margin-left: 15px;
+header nav a {
+    margin: 0 10px;
     text-decoration: none;
-    font-weight: bold;
+    color: white;
 }
 
-nav a:hover {
-    text-decoration: underline;
+#carrinho-icon {
+    cursor: pointer;
 }
 
 main {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
     padding: 20px;
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
 .produto {
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
+    border-radius: 10px;
     text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .produto img {
-    max-width: 100%;
-    border-radius: 8px;
+    max-width: 70%;
+    border-radius: 10px;
 }
 
-.produto h3 {
-    margin: 10px 0;
-}
-
-.produto p {
-    color: #666;
-}
-
-button {
-    background: #ff9800;
-    border: none;
-    padding: 10px 15px;
+.produto button {
+    background-color: #d35400;
     color: white;
-    border-radius: 5px;
+    border: none;
+    padding: 8px 12px;
+    margin-top: 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-button:hover {
-    background: #e68900;
+.produto button:hover {
+    background-color: #e67e22;
 }
 
-aside {
+#carrinho {
     position: fixed;
     top: 0;
-    right: 0;
+    right: -300px;
     background: white;
     width: 300px;
     height: 100%;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
 
-.oculto {
-    display: none;
+#carrinho.mostrar {
+    right: 0;
+}
+
+#lista-carrinho li {
+    margin: 10px 0;
+    font-size: 14px;
 }
 
 footer {
-    background: #b22222;
+    background-color: #d35400;
     color: white;
-    text-align: center;
     padding: 10px;
+    text-align: center;
 }
