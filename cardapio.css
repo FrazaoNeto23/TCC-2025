@@ -7,11 +7,15 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f3e9;
+    background-image: url('img/fundo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }
 
 /* Cabeçalho */
 header {
-    background-color: #d35400;
+    background-color: transparent;
     color: white;
     padding: 15px;
     display: flex;
@@ -59,7 +63,7 @@ main {
 }
 
 .produto {
-    background: white;
+    background: transparent;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
@@ -79,12 +83,13 @@ main {
 .produto h3 {
     font-size: 1.1rem;
     margin: 10px 0;
+    color: #ffffff;
 }
 
 .produto p {
     font-size: 1rem;
     font-weight: bold;
-    color: #d35400;
+    color: #ffffff;
 }
 
 .produto button {
@@ -109,9 +114,9 @@ main {
     right: -300px;
     /* sempre começa escondido no desktop */
     background: white;
-    width: 300px;
+    width: 200px;
     height: 100%;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     transition: right 0.3s ease-in-out;
     z-index: 1000;
@@ -131,9 +136,16 @@ main {
     margin-bottom: 10px;
 }
 
+#finalizar{
+    background-color: #d35400;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 /* Rodapé */
 footer {
-    background-color: #d35400;
+    background-color: transparent;
     color: white;
     padding: 10px;
     text-align: center;

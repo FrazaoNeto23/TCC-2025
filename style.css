@@ -6,153 +6,105 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7f3e9;
+    color: white;
+    background-image: url('img/fundo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    
+    
 }
 
-/* Cabeçalho */
 header {
-    background-color: #d35400;
-    color: white;
-    padding: 20px;
+    background: transparent;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
-header nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
+header h1 {
+    font-size: 1.5rem;
 }
 
-header nav a {
+nav a {
+    margin-left: 15px;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     font-weight: bold;
-    font-size: 0.9rem;
 }
 
 nav a.ativo {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #ffffff;
 }
 
-
-#carrinho-icon {
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 5px 10px;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-/* Conteúdo principal */
 main {
-    padding: 10px;
-}
-
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.produto {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
     text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
+    padding: 60px 20px;
+    background: url("https://source.unsplash.com/1600x900/?burger,restaurant") no-repeat center/cover;
+    color: white;
+    position: relative;
 }
 
-.produto:hover {
-    transform: scale(1.03);
+main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.produto img {
-    max-width: 100%;
-    border-radius: 10px;
+main h2,
+.descricao-cardapio,
+.cta-btn {
+    position: relative;
+    z-index: 1;
 }
 
-.produto h3 {
+main h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.descricao-cardapio {
     font-size: 1.1rem;
-    margin: 10px 0;
+    max-width: 600px;
+    margin: 0 auto 20px;
 }
 
-.produto p {
+.cta-btn {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #333;
+    padding: 12px 25px;
     font-size: 1rem;
     font-weight: bold;
-    color: #d35400;
+    border-radius: 25px;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.3s;
+}
+.cta-btn:hover {
+    transform: scale(1.05);
+    background-color: #ffb700;
 }
 
-.produto button {
-    background-color: #d35400;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.2s ease;
-}
-
-.produto button:hover {
-    background-color: #e67e22;
-}
-
-/* Carrinho lateral */
-#carrinho {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    /* sempre começa escondido no desktop */
-    background: white;
-    width: 300px;
-    height: 100%;
-    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    transition: right 0.3s ease-in-out;
-    z-index: 1000;
-}
-
-#carrinho.mostrar {
-    right: 0;
-}
-
-#fechar-carrinho {
-    display: none;
-    /* só mostra no celular */
-    background: none;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-/* Rodapé */
 footer {
-    background-color: #d35400;
+    background: transparent;
     color: white;
-    padding: 10px;
     text-align: center;
-    font-size: 0.9rem;
+    padding: 5px;
+    margin-top: 195px;
 }
 
-/* RESPONSIVIDADE PARA CELULAR */
 @media (max-width: 768px) {
-    #carrinho {
-        width: 100%;
-        right: -100%;
-        /* escondido fora da tela no mobile */
+    header {
+        flex-direction: column;
+        text-align: center;
     }
-
-    #carrinho.mostrar {
-        right: 0;
-    }
-
-    #fechar-carrinho {
-        display: block;
+    nav a {
+        display: inline-block;
+        margin: 10px 5px;
     }
 }
