@@ -54,6 +54,6 @@
     <footer>
         <p>© 2025 Burger House - Feito com ❤️ e muito queijo</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
