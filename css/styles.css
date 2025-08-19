@@ -7,12 +7,6 @@
 body {
     font-family: Arial, sans-serif;
     color: black;
-    background-image: url('img/fundo.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
-    
-    
 }
 
 header {
@@ -30,19 +24,19 @@ header h1 {
 nav a {
     margin-left: 15px;
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
     font-weight: bold;
 }
 
 nav a.ativo {
-    border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid #000000;
 }
 
 main {
     text-align: center;
     padding: 60px 20px;
     background: url("https://source.unsplash.com/1600x900/?burger,restaurant") no-repeat center/cover;
-    color: white;
+    color: rgb(108, 51, 51);
     position: relative;
 }
 
@@ -92,7 +86,7 @@ main h2 {
 
 footer {
     background: transparent;
-    color: white;
+    color: rgb(160, 51, 51);
     text-align: center;
     padding: 5px;
     margin-top: 195px;

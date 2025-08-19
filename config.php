@@ -1,5 +1,5 @@
 <?php
-$host = "localhost";
+$host = "localhost:3307";
 $user = "root";   // usuário do MySQL
 $pass = "";       // senha (no XAMPP geralmente é vazio)
 $db   = "burger_house";
