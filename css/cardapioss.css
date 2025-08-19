@@ -210,7 +210,7 @@ li.destacado {
 }
 
 #finalizar {
-    background: #27ae60;
+    background: rgb(122, 93, 93);
     color: white;
     border: none;
     padding: 10px;
@@ -220,7 +220,7 @@ li.destacado {
 }
 
 #finalizar:hover {
-    background: #1e8449;
+    background:rgb(122, 93, 93);
 }
 
 /* Footer */
