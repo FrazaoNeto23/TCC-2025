@@ -1,68 +1,112 @@
 <?php
-include("conexao.php");
+include "config.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome  = $_POST["nome"];
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome  = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-    // 🔐 Validação no servidor
-    if (strlen($senha) < 6 || 
-        !preg_match("/[A-Za-z]/", $senha) || 
-        !preg_match("/[0-9]/", $senha)) {
-        $erro = "A senha deve ter pelo menos 6 caracteres, incluindo letras e números.";
+    // Criptografa a senha
+    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO usuarios (nome, email, senha, is_admin) VALUES (?, ?, ?, 0)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $nome, $email, $senhaHash);
+
+    if ($stmt->execute()) {
+        $mensagem = "Usuário cadastrado com sucesso! <a href='login.php'>Fazer login</a>";
     } else {
-        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-        $sql = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome','$email','$senhaHash')";
-        
-        if ($con->query($sql) === TRUE) {
-            $sucesso = "Cadastro realizado com sucesso! <a href='index.php'>Fazer login</a>";
-        } else {
-            $erro = "Erro: " . $con->error;
-        }
+        $erro = "Erro: " . $stmt->error;
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="css/L-C.css">
-    <script>
-        function validarSenha() {
-            const senha = document.getElementById("senha").value;
-            const erro = document.getElementById("erroSenha");
-
-            // Expressão: mínimo 6 caracteres, pelo menos 1 letra e 1 número
-            const regex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
-
-            if (!regex.test(senha)) {
-                erro.textContent = "A senha deve ter pelo menos 6 caracteres, incluindo letras e números.";
-                return false;
-            } else {
-                erro.textContent = "";
-                return true;
-            }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-    </script>
+        .cadastro-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 320px;
+            text-align: center;
+        }
+        .cadastro-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .cadastro-box input {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        .cadastro-box button {
+            width: 95%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #4CAF50;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cadastro-box button:hover {
+            background: #45a049;
+        }
+        .cadastro-box p {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .cadastro-box a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .mensagem {
+            color: green;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .erro {
+            color: red;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <form method="POST" onsubmit="return validarSenha()">
-        <h2>Cadastro</h2>
-        <?php 
-        if (!empty($sucesso)) echo "<p class='sucesso'>$sucesso</p>"; 
-        if (!empty($erro)) echo "<p class='erro'>$erro</p>"; 
-        ?>
-        <input type="text" name="nome" placeholder="Nome" required>
-        <input type="email" name="email" placeholder="E-mail" required>
-        <input type="password" id="senha" name="senha" placeholder="Senha" required onkeyup="validarSenha()">
-        <p id="erroSenha" class="erro"></p>
+
+<div class="cadastro-box">
+    <h2>Cadastro</h2>
+
+    <?php if (!empty($mensagem)) echo "<p class='mensagem'>$mensagem</p>"; ?>
+    <?php if (!empty($erro)) echo "<p class='erro'>$erro</p>"; ?>
+
+    <form method="post" action="cadastro.php">
+        <input type="text" name="nome" placeholder="Nome" required><br>
+        <input type="email" name="email" placeholder="E-mail" required><br>
+        <input type="password" name="senha" placeholder="Senha" required><br>
         <button type="submit">Cadastrar</button>
     </form>
-    <a href="index.php">Já tem conta? Faça login</a>
+    <p><a href="index.php">Já tem conta? Fazer login</a></p>
 </div>
+
 </body>
 </html>
