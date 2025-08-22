@@ -27,34 +27,14 @@
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
+                    // Corrigindo o caminho das imagens
                     echo "
                     <div class='produto'>
-                        <img src='{$row['imagem']}' alt='{$row['nome']}'>
+                        <img src='img/{$row['imagem']}' alt='{$row['nome']}'>
                         <h3>{$row['nome']}</h3>
                         <p>{$row['descricao']}</p><br>
                         <p>R$ " . number_format($row['preco'], 2, ',', '.') . "</p>
-                        <button onclick=\"adicionarCarrinho('{$row['nome']}', {$row['preco']}, '{$row['imagem']}')\">Adicionar</button>
-                    </div>";
-                }
-            } else {
-                echo "<p>Nenhum produto cadastrado ainda.</p>";
-            }
-            ?>
-        </div>
-        <div class="produtos">
-            <?php
-            $sql = "SELECT * FROM produtos";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "
-                    <div class='produto'>
-                        <img src='{$row['imagem']}' alt='{$row['nome']}'>
-                        <h3>{$row['nome']}</h3>
-                        <p>{$row['descricao']}</p><br>
-                        <p>R$ " . number_format($row['preco'], 2, ',', '.') . "</p>
-                        <button onclick=\"adicionarCarrinho('{$row['nome']}', {$row['preco']}, '{$row['imagem']}')\">Adicionar</button>
+                        <button onclick=\"adicionarCarrinho('{$row['nome']}', {$row['preco']}, 'img/{$row['imagem']}')\">Adicionar</button>
                     </div>";
                 }
             } else {
