@@ -1,31 +1,46 @@
-<!DOCTYPE html> 
+<?php
+session_start();
+include("conexao.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $senha = $_POST["senha"];
+
+    $sql = "SELECT * FROM usuarios WHERE email='$email'";
+    $result = $con->query($sql);
+
+    if ($result->num_rows > 0) {
+        $usuario = $result->fetch_assoc();
+
+        if (password_verify($senha, $usuario["senha"])) {
+            $_SESSION["usuario"] = $usuario["nome"];
+            header("Location: home.php");
+            exit();
+        } else {
+            $erro = "Senha incorreta!";
+        }
+    } else {
+        $erro = "Usuário não encontrado!";
+    }
+}
+?>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍔 Burger House</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/L-C.css">
 </head>
 <body>
-    <header>
-        <h1>🍔 Burger House</h1>
-        <nav>
-            <a href="index.php" class="ativo">Home</a>
-            <a href="cardapio.php">Cardápio</a>
-            <a href="#">Contato</a>
-        </nav>
-    </header>
-
-    <main>
-        <h2>O Hambúrguer dos Seus Sonhos</h2>
-        <p class="descricao-cardapio">
-            Sabor artesanal, ingredientes frescos e aquele toque especial que só a Burger House tem! 😋
-        </p>
-        <a href="cardapio.php" class="cta-btn">Ver Cardápio</a>
-    </main>
-
-    <footer>
-        <p>© 2025 Burger House - Feito com ❤️ e muito queijo</p>
-    </footer>
+<div class="container">
+    <form method="POST">
+        <h2>Login</h2>
+        <?php if (!empty($erro)) echo "<p class='erro'>$erro</p>"; ?>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+    <a href="cadastro.php">Não tem conta? Cadastre-se</a>
+</div>
 </body>
 </html>

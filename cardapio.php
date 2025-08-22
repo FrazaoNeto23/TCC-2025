@@ -11,7 +11,7 @@
     <header>
         <h1>🍔 Burger House</h1>
         <nav>
-            <a href="index.php">Home</a>
+            <a href="home.php">Home</a>
             <a href="cardapio.php" class="ativo">Cardápio</a>
             <a href="#">Contato</a>
             <div id="carrinho-icon">🛒 <span id="contador">0</span></div>
